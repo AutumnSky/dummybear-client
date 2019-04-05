@@ -1,8 +1,8 @@
 # Playground for my React Skill
 
 - [x] landing
-- [ ] sign in
-- [ ] sign up
+- [x] sign in
+- [x] sign up
 - [ ] home
 - [ ] logout
 - [ ] border

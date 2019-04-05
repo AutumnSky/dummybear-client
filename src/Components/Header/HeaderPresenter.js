@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import urls from 'urls';
 
 const Container = styled.div`
   position: fixed;
@@ -16,51 +18,39 @@ const Container = styled.div`
 
 const MenuContainer = styled.div``;
 
-const Logo = styled.h1`
+const LogoButton = styled.button`
   font-size: 2rem;
   font-weight: 700;
   padding: 0.5rem;
   text-transform: uppercase;
 `;
 
-const Menu = styled.button`
+const MenuButton = styled.button`
   font-weight: 600;
-  border: none;
   font-size: 1rem;
-  margin-left: 1rem;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
+  margin-right: 1rem;
 `;
 
-class HeaderPresenter extends React.Component {
-  handleSignUp = () => {
-    alert('signup');
-  };
+const getMenu = (changePage) => {
+  return (
+    <React.Fragment>
+      <MenuButton onClick={() => changePage(urls.SIGN_UP)}>SignUp</MenuButton>
+      <MenuButton onClick={() => changePage(urls.SIGN_IN)}>SignIn</MenuButton>
+    </React.Fragment>
+  );
+};
 
-  handleSignIn = () => {
-    alert('signin');
-  };
-
-  getMenu = () => {
-    return (
-      <React.Fragment>
-        <Menu onClick={this.handleSignUp}>SignUp</Menu>
-        <Menu onClick={this.handleSignIn}>SignIn</Menu>
-      </React.Fragment>
-    );
-  };
-
-  render() {
-    return (
-      <Container>
-        <Logo>Autumn</Logo>
-        <MenuContainer>{this.getMenu()}</MenuContainer>
-      </Container>
-    );
-  }
-}
+const HeaderPresenter = ({ changePage }) => {
+  return (
+    <Container>
+      <LogoButton onClick={() => changePage(urls.LANDING)}>Autumn</LogoButton>
+      <MenuContainer>{getMenu(changePage)}</MenuContainer>
+    </Container>
+  );
+};
 
 export default HeaderPresenter;
+
+HeaderPresenter.propTypes = {
+  changePage: PropTypes.func.isRequired
+};

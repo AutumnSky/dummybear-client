@@ -1,3 +1,4 @@
-import HeaderPresenter from './HeaderPresenter';
+import HeaderContainer from './HeaderContainer';
+import { withRouter } from 'react-router-dom';
 
-export default HeaderPresenter;
+export default withRouter(HeaderContainer);
