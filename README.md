@@ -14,3 +14,7 @@
 - [ ] chat room
 - [ ] Theme
 - [ ] Localization
+
+## ETCs
+- [x] redux
+- [ ] redux saga
