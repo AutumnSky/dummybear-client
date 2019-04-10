@@ -11,9 +11,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class SignInContainer extends React.Component {
-  handleSignIn = (event) => {
+  handleSignIn = (event, email, password) => {
     event.preventDefault();
-    this.props.requestLogin('saga email', 'saga pw');
+    this.props.requestLogin(email, password);
   };
 
   render() {

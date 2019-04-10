@@ -17,5 +17,11 @@ export default {
     return {
       type: ActionNames.USER_LOGOUT
     };
+  },
+  error: function(error) {
+    return {
+      type: ActionNames.ERROR_COMMON,
+      payload: error
+    };
   }
 };

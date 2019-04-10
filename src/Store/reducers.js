@@ -11,7 +11,6 @@ function reducer(state = initialState, action) {
 
   switch (type) {
     case ActionNames.USER_LOGIN: {
-      console.log('login', payload);
       newState.loginUser = payload.loginUser;
       newState.token = payload.token;
       break;
@@ -21,7 +20,12 @@ function reducer(state = initialState, action) {
       newState.token = null;
       break;
     }
+    case ActionNames.ERROR_COMMON: {
+      console.log('common error', payload.response.data);
+      break;
+    }
     default: {
+      console.log('there is no reducer for...', action);
       break;
     }
   }

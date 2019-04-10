@@ -47,17 +47,20 @@ const Button = styled.button`
   text-transform: uppercase;
 `;
 
+const emailInput = React.createRef();
+const passwordInput = React.createRef();
+
 const SignInPresenter = ({ handleSignIn }) => (
   <Container>
     <form>
       <SignUpBox>
         <Title>Sign In</Title>
 
-        <Label htmlFor="text">Email</Label>
-        <Input id="text" type="text" placeholder="email" />
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="text" placeholder="email" ref={emailInput} />
         <Label htmlFor="password">Password</Label>
-        <Input id="password" type="password" placeholder="password" />
-        <Button onClick={handleSignIn}>Confirm</Button>
+        <Input id="password" type="password" placeholder="password" ref={passwordInput} />
+        <Button onClick={(e) => handleSignIn(e, emailInput.current.value, passwordInput.current.value)}>Confirm</Button>
       </SignUpBox>
     </form>
   </Container>
