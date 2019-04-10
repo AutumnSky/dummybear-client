@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import urls from 'urls';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { actionCreator } from 'Store/Action';
+import actionCreator from 'Store/actionCreator';
 
 const mapStateToProps = (state) => {
   return { loginUser: state.loginUser };

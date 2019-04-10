@@ -1,9 +1,12 @@
-export const ActionNames = {
-  USER_LOGIN: 'USER_LOGIN',
-  USER_LOGOUT: 'USER_LOGOUT'
-};
+import { ActionNames } from './constants';
 
-export const actionCreator = {
+export default {
+  requestLogin: function(email, password) {
+    return {
+      type: ActionNames.REQUEST_USER_LOGIN,
+      payload: { email, password }
+    };
+  },
   login: function(loginUser, token) {
     return {
       type: ActionNames.USER_LOGIN,

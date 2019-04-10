@@ -1,4 +1,4 @@
-import { ActionNames } from '../Action';
+import { ActionNames } from './constants';
 
 const initialState = {
   loginUser: null,
@@ -11,6 +11,7 @@ function reducer(state = initialState, action) {
 
   switch (type) {
     case ActionNames.USER_LOGIN: {
+      console.log('login', payload);
       newState.loginUser = payload.loginUser;
       newState.token = payload.token;
       break;
