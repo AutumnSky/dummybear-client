@@ -7,6 +7,12 @@ export default {
       payload: { email, password }
     };
   },
+  requestAutoLogin: function(token) {
+    return {
+      type: ActionNames.REQUEST_AUTO_LOGIN,
+      payload: { token }
+    };
+  },
   login: function(loginUser, token) {
     return {
       type: ActionNames.USER_LOGIN,

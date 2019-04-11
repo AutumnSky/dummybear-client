@@ -11,5 +11,10 @@ export default {
       email,
       password
     });
+  },
+  autoLogin: (token) => {
+    return api.post('/auth/signin/auto', {
+      token
+    });
   }
 };

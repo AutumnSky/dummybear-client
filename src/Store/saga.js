@@ -33,6 +33,22 @@ function* watchAsyncLogin() {
   yield takeEvery(ActionNames.REQUEST_USER_LOGIN, asyncLogin);
 }
 
+function* asyncAutoLogin(action) {
+  const { token } = action.payload;
+
+  try {
+    const res = yield call(api.autoLogin, token);
+    const { data: { loginUser, token: newToken } } = res.data;
+    yield put(actionCreator.login(loginUser, newToken));
+  } catch (error) {
+    yield put(actionCreator.error(error));
+  }
+}
+
+function* watchAsyncAutoLogin() {
+  yield takeEvery(ActionNames.REQUEST_AUTO_LOGIN, asyncAutoLogin);
+}
+
 export default function* rootSaga() {
-  yield all([ watchAsyncLogin() ]);
+  yield all([ watchAsyncLogin(), watchAsyncAutoLogin() ]);
 }

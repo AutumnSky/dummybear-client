@@ -11,10 +11,18 @@ import DashBoard from './Components/DashBoard';
 import NeedLogin from './Components/Error/NeedLogin';
 import NotFound from './Components/Error/NotFound';
 import urls from 'urls';
+import actionCreator from 'Store/actionCreator';
 
 const mapStateToProps = (state) => {
   return {
-    loginUser: state.loginUser
+    loginUser: state.loginUser,
+    token: state.token
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    requestAutoLogin: (token) => dispatch(actionCreator.requestAutoLogin(token))
   };
 };
 
@@ -38,6 +46,27 @@ const GlobalStyle = createGlobalStyle`
 const ComponentsContainer = styled.div`padding-top: 4.7rem;`;
 
 class App extends Component {
+  componentDidMount() {
+    // auto login
+    const { token } = this.props;
+    if (!token) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        console.log('do auto login');
+        this.props.requestAutoLogin(token);
+      }
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { token, loginUser } = this.props;
+    if (token && loginUser) {
+      localStorage.setItem('token', token);
+    } else if (!token && !loginUser) {
+      localStorage.clear();
+    }
+  }
+
   checkLogIn = (component) => {
     if (this.props.loginUser) {
       return component;
@@ -67,4 +96,4 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

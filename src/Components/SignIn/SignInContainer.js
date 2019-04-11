@@ -12,7 +12,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: () => dispatch(actionCreator.login({ name: 'user1' }, 'tokenstring')),
     requestLogin: (email, password) => dispatch(actionCreator.requestLogin(email, password))
   };
 };
