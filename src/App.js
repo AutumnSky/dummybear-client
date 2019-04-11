@@ -2,11 +2,21 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reset from 'styled-reset';
 import styled, { createGlobalStyle } from 'styled-components';
+import { connect } from 'react-redux';
 import Header from './Components/Header';
 import Landing from './Components/Landing';
 import SignUp from './Components/SignUp';
 import SignIn from './Components/SignIn';
+import DashBoard from './Components/DashBoard';
+import NeedLogin from './Components/Error/NeedLogin';
+import NotFound from './Components/Error/NotFound';
 import urls from 'urls';
+
+const mapStateToProps = (state) => {
+  return {
+    loginUser: state.loginUser
+  };
+};
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -28,6 +38,14 @@ const GlobalStyle = createGlobalStyle`
 const ComponentsContainer = styled.div`padding-top: 4.7rem;`;
 
 class App extends Component {
+  checkLogIn = (component) => {
+    if (this.props.loginUser) {
+      return component;
+    } else {
+      return <NeedLogin />;
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -39,7 +57,8 @@ class App extends Component {
               <Route path={urls.LANDING} exact component={Landing} />
               <Route path={urls.SIGN_UP} component={SignUp} />
               <Route path={urls.SIGN_IN} component={SignIn} />
-              <Route component={Landing} />
+              <Route path={urls.DASHBOARD} render={() => this.checkLogIn(<DashBoard />)} />
+              <Route component={NotFound} />
             </Switch>
           </ComponentsContainer>
         </BrowserRouter>
@@ -48,4 +67,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, null)(App);

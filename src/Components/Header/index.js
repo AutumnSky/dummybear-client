@@ -64,6 +64,8 @@ class Header extends React.Component {
     ) : (
       // menu for login
       <React.Fragment>
+        <MenuButton onClick={() => this.handleChangePage(urls.DASHBOARD)}>DashBoard</MenuButton>
+        <MenuButton onClick={() => this.handleChangePage(urls.MYPAGE)}>MyPage</MenuButton>
         <MenuButton onClick={() => this.handleLogOut()}>LogOut</MenuButton>
       </React.Fragment>
     );
