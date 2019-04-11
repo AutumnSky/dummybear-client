@@ -42,6 +42,10 @@ class SignInContainer extends React.Component {
 
   // case3. 로그인후 페이지 이동
   // ref: https://github.com/reactjs/reactjs.org/issues/721
+
+  // TODO : 로그인시점에 접근할 수 없는 페이지 처리
+  // ref: https://medium.com/the-many/adding-login-and-authentication-sections-to-your-react-or-react-native-app-7767fd251bd1
+  // refresh해도 로그인이 풀리지 않도록
   componentDidUpdate(prevProps) {
     const { loginUser } = this.props;
     if (loginUser) {
