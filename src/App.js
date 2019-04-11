@@ -9,6 +9,7 @@ import SignUp from './Components/SignUp';
 import SignIn from './Components/SignIn';
 import DashBoard from './Components/DashBoard';
 import NeedLogin from './Components/Error/NeedLogin';
+import MyPage from './Components/MyPage';
 import NotFound from './Components/Error/NotFound';
 import urls from 'urls';
 import actionCreator from 'Store/actionCreator';
@@ -50,7 +51,7 @@ class App extends Component {
     // auto login
     const { token } = this.props;
     if (!token) {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       if (token) {
         console.log('do auto login');
         this.props.requestAutoLogin(token);
@@ -61,9 +62,9 @@ class App extends Component {
   componentDidUpdate(prevProps) {
     const { token, loginUser } = this.props;
     if (token && loginUser) {
-      localStorage.setItem('token', token);
+      sessionStorage.setItem('token', token);
     } else if (!token && !loginUser) {
-      localStorage.clear();
+      sessionStorage.clear();
     }
   }
 
@@ -71,7 +72,7 @@ class App extends Component {
     if (this.props.loginUser) {
       return component;
     } else {
-      return <NeedLogin />;
+      return <SignIn />;
     }
   };
 
@@ -87,6 +88,7 @@ class App extends Component {
               <Route path={urls.SIGN_UP} component={SignUp} />
               <Route path={urls.SIGN_IN} component={SignIn} />
               <Route path={urls.DASHBOARD} render={() => this.checkLogIn(<DashBoard />)} />
+              <Route path={urls.MYPAGE} render={() => this.checkLogIn(<MyPage />)} />
               <Route component={NotFound} />
             </Switch>
           </ComponentsContainer>

@@ -50,6 +50,7 @@ class Header extends React.Component {
 
   handleLogOut = () => {
     this.props.logout();
+    this.props.history.push(urls.LANDING);
   };
 
   getMenu = () => {

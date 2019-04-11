@@ -3,11 +3,10 @@
 - [x] landing
 - [x] sign in
 - [x] sign up
-- [ ] home
-- [ ] logout
-- [ ] border
+- [x] logout
+- [ ] board
 
-- [ ] API call
+- [x] API call
 - [ ] fontawsome
 - [ ] bootstrap
 - [ ] popup
@@ -17,4 +16,4 @@
 
 ## ETCs
 - [x] redux
-- [ ] redux saga
+- [x] redux saga
