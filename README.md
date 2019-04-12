@@ -8,7 +8,6 @@
 
 - [x] API call
 - [ ] fontawsome
-- [ ] bootstrap
 - [ ] popup
 - [ ] chat room
 - [ ] Theme
@@ -17,3 +16,10 @@
 ## ETCs
 - [x] redux
 - [x] redux saga
+
+## UI frameworks
+- [] bootstrap
+- [] foundation
+- [] gestalt
+- [] ant
+- [] atlas kit

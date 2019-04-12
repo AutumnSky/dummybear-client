@@ -57,13 +57,14 @@ class Header extends React.Component {
     const { loginUser } = this.props;
 
     return !loginUser ? (
-      // menu for logout
+      // menu for all user
       <React.Fragment>
+        <MenuButton onClick={() => this.handleChangePage(urls.ANT_DESIGN)}>AntDesign</MenuButton>
         <MenuButton onClick={() => this.handleChangePage(urls.SIGN_UP)}>SignUp</MenuButton>
         <MenuButton onClick={() => this.handleChangePage(urls.SIGN_IN)}>SignIn</MenuButton>
       </React.Fragment>
     ) : (
-      // menu for login
+      // menu for login user
       <React.Fragment>
         <MenuButton onClick={() => this.handleChangePage(urls.DASHBOARD)}>DashBoard</MenuButton>
         <MenuButton onClick={() => this.handleChangePage(urls.MYPAGE)}>MyPage</MenuButton>

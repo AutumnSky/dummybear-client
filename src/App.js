@@ -8,9 +8,9 @@ import Landing from './Components/Landing';
 import SignUp from './Components/SignUp';
 import SignIn from './Components/SignIn';
 import DashBoard from './Components/DashBoard';
-import NeedLogin from './Components/Error/NeedLogin';
 import MyPage from './Components/MyPage';
-import NotFound from './Components/Error/NotFound';
+import AntDesign from './Components/AntDesign';
+import ErrorNotFound from './Components/ErrorNotFound';
 import urls from 'urls';
 import actionCreator from 'Store/actionCreator';
 
@@ -87,9 +87,10 @@ class App extends Component {
               <Route path={urls.LANDING} exact component={Landing} />
               <Route path={urls.SIGN_UP} component={SignUp} />
               <Route path={urls.SIGN_IN} component={SignIn} />
+              <Route path={urls.ANT_DESIGN} component={AntDesign} />
               <Route path={urls.DASHBOARD} render={() => this.checkLogIn(<DashBoard />)} />
               <Route path={urls.MYPAGE} render={() => this.checkLogIn(<MyPage />)} />
-              <Route component={NotFound} />
+              <Route component={ErrorNotFound} />
             </Switch>
           </ComponentsContainer>
         </BrowserRouter>

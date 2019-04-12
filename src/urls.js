@@ -3,5 +3,6 @@ export default {
   DASHBOARD: '/dashboard',
   SIGN_IN: '/signin',
   SIGN_UP: '/signup',
-  MYPAGE: '/mypage'
+  MYPAGE: '/mypage',
+  ANT_DESIGN: '/ant'
 };
