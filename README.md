@@ -7,7 +7,7 @@
 - [ ] board
 
 - [x] API call
-- [ ] fontawsome
+- [x] fontawsome
 - [ ] popup
 - [ ] chat room
 - [ ] Theme
